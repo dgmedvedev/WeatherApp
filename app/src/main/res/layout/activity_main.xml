@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:padding="8dp"
     tools:context=".MainActivity">
 
@@ -23,16 +24,20 @@
             android:id="@+id/editTextCity"
             android:layout_width="match_parent"
             android:layout_height="48sp"
-            android:textStyle="bold"
-            android:hint="@string/city"
+            android:textSize="18sp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:hint="@string/input_city"
             android:inputType="textPersonName"
-            android:autofillHints="city_title" />
+            android:padding="8dp"
+            android:textStyle="bold"
+            android:autofillHints="" />
 
         <Button
-            android:id="@+id/button_weather"
+            android:id="@+id/buttonShowWeather"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/download_weather" />
+            android:text="@string/show_weather" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,16 +55,25 @@
         <TextView
             android:id="@+id/textViewCity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/textViewTemp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/textViewDescription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
