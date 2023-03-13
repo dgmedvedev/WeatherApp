@@ -2,4 +2,5 @@
     <string name="app_name">Weather App</string>
     <string name="city">Введите название города или индекс:</string>
     <string name="download_weather">Узнать погоду</string>
+    <string name="url_address"><![CDATA[http://api.openweathermap.org/data/2.5/weather?q=Minsk&appid=85f1361d760adf6d851676c22ea6f89f]]></string>
 </resources>
