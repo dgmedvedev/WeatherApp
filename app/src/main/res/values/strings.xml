@@ -3,6 +3,6 @@
     <string name="input_city">Введите название города или индекс:</string>
     <string name="city">Minsk</string>
     <string name="show_weather">Узнать погоду</string>
-    <string name="url_address"><![CDATA[http://api.openweathermap.org/data/2.5/weather?q=%s&appid=85f1361d760adf6d851676c22ea6f89f&lang=ru&units=metric]]></string>
+    <string name="url_address"><![CDATA[http://api.openweathermap.org/data/2.5/weather?q=%s&appid={API key}&lang=ru&units=metric]]></string>
     <string name="regex">%.1f</string>
 </resources>
