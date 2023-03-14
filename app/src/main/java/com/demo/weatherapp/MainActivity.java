@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +23,7 @@ import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
-    String city = "Minsk";
+    String city;
     String name;
     String temp;
     String description;
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     String urlAddressPart1;
     String urlAddressPart2;
+    String urlAddress;
     String fullUrlAddress;
     String regex;
 
@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         urlAddressPart1 = getString(R.string.url_address_part1);
         urlAddressPart2 = getString(R.string.url_address_part2);
-        fullUrlAddress = urlAddressPart1 + city + urlAddressPart2;
+        urlAddress = getString(R.string.url_address);
+        city = getString(R.string.city);
+        fullUrlAddress = String.format(urlAddress, city);
         regex = getString(R.string.regex);
 
         button_weather = findViewById(R.id.buttonShowWeather);
@@ -60,9 +62,11 @@ public class MainActivity extends AppCompatActivity {
         getContent();
 
         button_weather.setOnClickListener(view -> {
-            city = editTextCity.getText().toString();
-            fullUrlAddress = urlAddressPart1 + city + urlAddressPart2;
-            getContent();
+            city = editTextCity.getText().toString().trim();
+            if (!city.isEmpty()) {
+                fullUrlAddress = String.format(urlAddress, city);
+                getContent();
+            }
         });
     }
 
@@ -111,17 +115,13 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(json);
             name = jsonObject.getString("name");
 
-            JSONObject main = jsonObject.getJSONObject("main");
-            temp = main.getString("temp");
+            temp = jsonObject.getJSONObject("main").getString("temp");
             double t = Double.parseDouble(temp);
-            t = t - 273.15;
-            temp = String.format(regex, t);
-            temp = "Температура: " + temp;
+            temp = "Температура: " + String.format(regex, t);
 
-            JSONArray weather = jsonObject.getJSONArray("weather");
-            JSONObject index = weather.getJSONObject(0);
-            description = index.getString("description");
-            description = "На улице: " + description;
+            description = jsonObject.getJSONArray("weather")
+                    .getJSONObject(0).getString("description");
+            description = String.format("На улице: %s", description);
         } catch (JSONException e) {
             e.printStackTrace();
         }
