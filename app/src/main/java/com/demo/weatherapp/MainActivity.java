@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
     String description;
     String json;
 
-    String urlAddressPart1;
-    String urlAddressPart2;
     String urlAddress;
     String fullUrlAddress;
     String regex;
@@ -46,8 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        urlAddressPart1 = getString(R.string.url_address_part1);
-        urlAddressPart2 = getString(R.string.url_address_part2);
         urlAddress = getString(R.string.url_address);
         city = getString(R.string.city);
         fullUrlAddress = String.format(urlAddress, city);
